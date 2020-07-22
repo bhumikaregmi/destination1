@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +16,7 @@ import com.example.yourdestination.R;
 
 import java.util.List;
 
-public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.MyViewHolder>{
+class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.MyViewHolder>{
 
     Context context;
     List<DestinationModel> destinationModelClassList;
@@ -50,13 +51,14 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView txtVew;
+        TextView txtVew ,txtDetail;
         ImageView img, heartImg;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             txtVew = itemView.findViewById(R.id.txtName);
             img = itemView.findViewById(R.id.img);
+            txtDetail= itemView.findViewById(R.id.detail);
             heartImg = itemView.findViewById(R.id.heartImg);
         }
 
@@ -72,9 +74,10 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
                     Intent i = new Intent(context, DetailPageActivity.class);
                     i.putExtra("name", destinationModelClass.getName());
                     i.putExtra("img", destinationModelClass.getImage());
+                    i.putExtra("detail", destinationModelClass.getDetail());
                     context.startActivity(i);
 
-//                Toast.makeText(context, "Selected : "+destinationModelClass.getName(), Toast.LENGTH_SHORT).show();
+             Toast.makeText(context, "Selected : "+destinationModelClass.getName(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

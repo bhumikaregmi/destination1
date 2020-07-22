@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.yourdestination.model.PhotoDetailModelClass;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseError;
@@ -34,7 +35,7 @@ public class Addplaces extends AppCompatActivity {
     DatabaseReference postsRef = ref.child("places");
     DatabaseReference newPostRef = postsRef.push();
     Toolbar toolbar;
-
+    private DatabaseReference mDatabase;
     StorageReference mStorageRef;
     ImageView selectedImage;
     Button chooseImage, upload;
@@ -125,7 +126,10 @@ public class Addplaces extends AppCompatActivity {
                                 String myUrl = uri.toString();
                                 System.out.println("My url is ====="+myUrl);
                                 imageUrl = uri.toString();
-                                startActivity(new Intent(Addplaces.this, ExploreMoreFloat.class));
+                                UploadData("Rara Lake",imageUrl,"Rara",
+                                        "A Lake with magnificent beauty; the Rara Lake \" +\n" +
+                                                "\"reminds visitors the meaning of life. It is also termed as the queen of the lakes.");
+
                             }
                         });
                         // Get a URL to the uploaded content
@@ -183,5 +187,29 @@ public class Addplaces extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    public void UploadData(String name,String photName,String photoDesc,String detail){
+        PhotoDetailModelClass p = new PhotoDetailModelClass();
+        p.setName(name);
+        p.setPhotoDesc(photoDesc);
+        p.setPhotoName(photName);
+        p.setDetail(detail);
+
+        newPostRef.setValue(p, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                if (databaseError != null) {
+                    Toast.makeText(Addplaces.this, "Data could not be saved " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    System.out.println("Data could not be saved " + databaseError.getMessage());
+
+                    startActivity(new Intent(Addplaces.this, ExploreMoreFloat.class));
+                } else {
+                    Toast.makeText(Addplaces.this, "Data saved successfully.", Toast.LENGTH_SHORT).show();
+                    System.out.println("Data saved successfully.");
+                }
+            }
+        });
+
     }
 }

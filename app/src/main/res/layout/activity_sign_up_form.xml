@@ -4,145 +4,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink"
+    android:background="@drawable/bg2"
     tools:context=".SignUpForm">
+
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_gravity="bottom"
-
-        >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_avg"
-            android:text="SignUp"
-            android:gravity="center"
-            android:textStyle="bold"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="130dp"
+            android:text="Create Account"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size_extra_large" />
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="@dimen/margin_avg"
-            android:layout_marginBottom="@dimen/margin_avg"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="40dp">
+
+
             <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_large"
+                android:layout_width="match_parent"
+                android:id="@+id/have"
+                android:layout_height="match_parent"
                 android:text="Already have an account? "
                 android:textColor="@color/black"
-                />
+                android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/navigate_to_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/loginBtn"
+                android:layout_width="99dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:text="Go to Login"
-                android:textSize="@dimen/text_size_large"
-                android:textColor="@color/colorAccent" />
+                android:text="Login"
+                android:textColor="@color/colorAccent"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <EditText
-            android:id="@+id/user_name_signup"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/edit_text_bg"
             android:hint="Name"
-            android:padding="@dimen/padding_avg"
-            android:layout_marginBottom="@dimen/margin_avg"/>
+            android:padding="15dp" />
 
         <EditText
-            android:id="@+id/user_email_signup"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/edit_text_bg"
             android:hint="Email"
-            android:padding="@dimen/padding_avg"
-            android:layout_marginBottom="@dimen/margin_avg"/>
+            android:padding="15dp" />
 
         <EditText
-            android:id="@+id/user_password_signup"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:padding="@dimen/padding_avg"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_bg"
             android:hint="Password"
             android:inputType="textPassword"
-            android:layout_marginBottom="@dimen/margin_avg"
-            />
+            android:padding="15dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:text="Gender"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_large"
-            android:layout_marginLeft="@dimen/margin_avg"
-            android:layout_marginBottom="@dimen/margin_min"/>
-
-        <RadioGroup
-
-            android:id="@+id/gender_rg"
-            android:layout_marginBottom="@dimen/margin_min"
-            android:layout_marginLeft="@dimen/margin_avg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton
-                android:id="@+id/male_rb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male"/>
-            <RadioButton
-                android:id="@+id/female_rb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Female"
-                />
-            <RadioButton
-                android:id="@+id/others_rb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Others"/>
-        </RadioGroup>
 
 
         <Button
-            android:id="@+id/signUp_button"
+            android:id="@+id/signUpBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_margin="@dimen/margin_avg"
             android:background="@drawable/button_bg"
-            android:text="SignUp"
-            android:paddingRight="@dimen/padding_big"
-            android:paddingLeft="@dimen/padding_big"
+            android:text="Sign Up"
+            android:textSize="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
             android:textAllCaps="false"
             android:textColor="@color/white"
-
             />
 
-
-
+        <ProgressBar
+            android:id="@+id/bar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="180dp"
+            android:layout_marginTop="50dp"
+            android:visibility="invisible" />
     </LinearLayout>
-
 
 
 </RelativeLayout>

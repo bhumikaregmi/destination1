@@ -24,6 +24,7 @@ public class HomeFragment extends Fragment {
     Button btnClick;
     CarouselView carouselView;
 
+
     int[] sampleImages = {R.drawable.lumbini,R.drawable.raralake,R.drawable.stupa};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,6 +36,8 @@ public class HomeFragment extends Fragment {
 
         btnClick = root.findViewById(R.id.btnClick);
         carouselView = root.findViewById(R.id.carouselView);
+
+
 
 
 
@@ -73,6 +76,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
             imageView.setImageResource(sampleImages[position]);
+
         }
     };
 

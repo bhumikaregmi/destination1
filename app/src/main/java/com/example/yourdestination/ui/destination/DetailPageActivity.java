@@ -11,7 +11,7 @@ import com.example.yourdestination.R;
 public class DetailPageActivity extends AppCompatActivity {
 
     ImageView img;
-    TextView txtDetail;
+    TextView txtDetail , txtDetailPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +19,10 @@ public class DetailPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_page);
         img = findViewById(R.id.imgView);
         txtDetail = findViewById(R.id.txtDesc);
+        txtDetailPage = findViewById(R.id.detail);
 
         txtDetail.setText(getIntent().getExtras().getString("name"));
         img.setImageResource(getIntent().getExtras().getInt("img"));
+        txtDetailPage.setText(getIntent().getExtras().getString("detail"));
     }
 }

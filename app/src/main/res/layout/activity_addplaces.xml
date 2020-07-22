@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/pink"
+    android:background="@drawable/bg1"
     tools:context=".Addplaces">
 
 <com.google.android.material.appbar.AppBarLayout
@@ -50,15 +50,18 @@
             android:layout_below="@+id/up"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:textColorHint="@color/white">
-
+            android:textColorHint="@color/blue">
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/place"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
                 android:hint="Place Name"
-                android:inputType="text"
-                android:textSize="18sp" />
+                android:padding="15dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -68,16 +71,18 @@
         android:id="@+id/txtInputLayoutEmail"
         android:layout_below="@+id/txtInputLayoutPlaceName"
         android:focusableInTouchMode="true"
-        android:textColorHint="@color/white">
-
+        android:textColorHint="@color/blue">
         <EditText
+            android:id="@+id/desc"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
             android:hint="Description"
-            android:id="@+id/description"
-            android:inputType="text"
-            android:textSize="18sp"
-            />
+            android:padding="15dp" />
     </com.google.android.material.textfield.TextInputLayout>
         <ImageView
             android:id="@+id/imgView"

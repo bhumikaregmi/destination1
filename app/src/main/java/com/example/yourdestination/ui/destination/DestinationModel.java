@@ -4,6 +4,7 @@ public class DestinationModel{
 
     private String name;
     private int image;
+    private String detail;
 
     public String getName() {
         return name;
@@ -21,8 +22,19 @@ public class DestinationModel{
         this.image = image;
     }
 
-    public DestinationModel(String name, int image) {
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String name) {
+        this.detail = name;
+    }
+
+
+
+    public DestinationModel(String name, int image, String detail) {
         this.name = name;
         this.image = image;
+        this.detail = detail;
     }
 }

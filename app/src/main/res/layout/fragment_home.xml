@@ -20,13 +20,13 @@
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         app:fillColor="#FFFFFFFF"
         app:pageColor="#00000000"
         app:radius="6dp"
         app:slideInterval="3000"
         app:strokeColor="#FF777777"
-        app:strokeWidth="1dp"/>
+        app:strokeWidth="1dp" />
 
     <Button
         android:id="@+id/btnClick"
@@ -36,10 +36,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="118dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="123dp"
-        android:layout_marginBottom="368dp"
-        android:background="@drawable/button"
+        android:layout_marginBottom="320dp"
+        android:background="@drawable/bg1"
         android:gravity="center"
         android:text="Explore More"
         android:textSize="15sp" />
@@ -59,6 +59,13 @@
         android:layout_centerHorizontal="true">
         </AdapterViewFlipper>
 
+    <ImageView
+        android:id="@+id/myImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/carouselView"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/image3" />
 
 
 

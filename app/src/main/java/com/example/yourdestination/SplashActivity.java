@@ -34,7 +34,7 @@ import java.util.List;
 public class SplashActivity extends AppCompatActivity {
 
     // splash screen time out
-    private static int SPLASH_SCREEN_TIMEOUT = 4000;
+    private static int SPLASH_SCREEN_TIMEOUT = 3000;
 
     ImageView imageView,logo;
     CheckGpsEnable checkGpsEnable;
