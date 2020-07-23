@@ -7,15 +7,33 @@
     android:layout_margin="0dp"
     android:background="@drawable/bg2"
     android:orientation="vertical"
-    tools:context=".LoginFormForUser"
+    tools:context=".Login"
     tools:visibility="visible">
+
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <androidx.appcompat.widget.Toolbar
+            app:title="Login Form"
+            app:titleTextColor="@color/white"
+            android:id="@+id/toolbar"
+            app:theme="@style/ToolbarTheme"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="110dp"
-        android:layout_marginBottom="0dp"
+        android:layout_height="152dp"
         android:layout_marginStart="120dp"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
         android:text="Login Form"
         android:textColor="@color/black"
@@ -23,51 +41,25 @@
         android:textStyle="bold" />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="40dp">
-
-        <TextView
-            android:id="@+id/account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Don't have an account? "
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/navigate_to_login"
-            android:layout_width="99dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Sign Up"
-            android:textColor="@color/colorAccent"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-        <EditText
-            android:id="@+id/user_email_login"
+    <EditText
+            android:id="@+id/useremail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
            android:layout_marginBottom="20dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:hint="Username"
+            android:background="@drawable/edit_text_bg"
+            android:hint="User Email"
             android:padding="15dp" />
 
         <EditText
-            android:id="@+id/user_password_login"
+            android:id="@+id/userpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:background="@color/white"
+            android:background="@drawable/edit_text_bg"
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="15dp"
@@ -75,12 +67,12 @@
 
         <Button
             android:id="@+id/login_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_margin="@dimen/margin_avg"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginStart="100dp"
             android:background="@drawable/button_bg"
             android:paddingLeft="@dimen/padding_big"
             android:paddingRight="@dimen/padding_big"
@@ -88,6 +80,17 @@
             android:textSize="20dp"
             android:textAllCaps="false"
             android:textColor="@color/white" />
+
+
+    <TextView
+        android:id="@+id/account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Don't have an account? Create account."
+        android:textColor="@color/black"
+        android:textSize="15dp" />
 
     <ProgressBar
         android:id="@+id/bar"

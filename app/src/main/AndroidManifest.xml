@@ -14,13 +14,23 @@
         android:roundIcon="@drawable/mylogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Addplaces"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".SignUpForm" />
-        <activity android:name=".LoginFormForUser" />
+
+
+        <activity android:name=".Register"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
+        <activity android:name=".Login"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
         <activity
             android:name=".ExploreMoreFloat"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity android:name=".ui.destination.DetailPageActivity" />
 
         <activity android:name=".SplashActivity"

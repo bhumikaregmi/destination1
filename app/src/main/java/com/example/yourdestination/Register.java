@@ -2,6 +2,7 @@ package com.example.yourdestination;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,29 +19,38 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignUpForm extends AppCompatActivity {
-    EditText mName , mEmail, mPassword;
-    Button mLogin;
-    TextView  mSignButton;
-    FirebaseAuth mAuth;
+public class Register extends AppCompatActivity {
+    Toolbar toolbar;
+    EditText mFullName , mEmail, mPassword, mPhone;
+    Button mRegisterBtn;
+    TextView  mLoginBtn;
+    FirebaseAuth fAuth;
     ProgressBar mProgress;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_form);
+        setContentView(R.layout.register);
 
-        mLogin = findViewById(R.id.signUpBtn);
-        mName = findViewById(R.id.name);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("Registration Form");
+
+        mFullName = findViewById(R.id.name);
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
-        mSignButton = findViewById(R.id.loginBtn);
+        mPhone = findViewById(R.id.phone);
+        mRegisterBtn=findViewById(R.id.register);
+        mLoginBtn= findViewById(R.id.account);
+
+        fAuth = FirebaseAuth.getInstance();
         mProgress = findViewById(R.id.bar2);
 
-        mAuth = FirebaseAuth.getInstance();
 
-        mLogin.setOnClickListener(new View.OnClickListener(){
+        mRegisterBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
@@ -61,24 +71,25 @@ public class SignUpForm extends AppCompatActivity {
                         }
                         mProgress.setVisibility(View.VISIBLE);
 
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener
+                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener
                         (new OnCompleteListener<AuthResult>(){
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
-                                    Toast.makeText(SignUpForm.this ,"User created",Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(SignUpForm.this, Addplaces.class));
+                                    Toast.makeText(Register.this ,"User created",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), Addplaces.class));
                                 }else {
-                                    Toast.makeText(SignUpForm.this ,"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Register.this ,"Error!" +
+                                            task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                                     mProgress.setVisibility(View.GONE);
                                 }
                             }
 
                         });
-                mSignButton.setOnClickListener(new View.OnClickListener(){
+                mLoginBtn.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(SignUpForm.this, LoginFormForUser.class));
+                        startActivity(new Intent(getApplicationContext(), Login.class));
                     }
                 });
             }

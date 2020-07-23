@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.yourdestination.model.PhotoDetailModelClass;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,7 +39,7 @@ public class Addplaces extends AppCompatActivity {
     private DatabaseReference mDatabase;
     StorageReference mStorageRef;
     ImageView selectedImage;
-    Button chooseImage, upload;
+    Button chooseImage, upload, logout;
     String imageUrl;
 
     private Uri filePath;
@@ -58,6 +59,7 @@ public class Addplaces extends AppCompatActivity {
         selectedImage = findViewById(R.id.imgView);
         chooseImage = findViewById(R.id.chooseimg);
         upload = findViewById(R.id.uploadimg);
+        logout = findViewById(R.id.logoutbtn);
 
         chooseImage.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,6 +76,13 @@ public class Addplaces extends AppCompatActivity {
 
             }
         });
+    }
+
+//logout
+    public void logout(View view){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(),Login.class));
+        finish();
     }
 
     public void sendDataToFirebase(){
@@ -102,15 +111,11 @@ public class Addplaces extends AppCompatActivity {
 
     }
 
+
+    //Upload Image
     public void uploadImage(){
         upload.setEnabled(false);
         upload.setBackgroundColor(getResources().getColor(R.color.black));
-        mStorageRef = FirebaseStorage.getInstance().getReference();
-//        Uri imageUri = Uri.parse("android.resource://"+ R.class.getPackage().getName()+"/"+R.drawable.rara);
-//        Uri file = Uri.fromFile(new File(imageUri.getPath()));
-//        System.out.println("Image uri = "+imageUri);
-//        StorageReference riversRef = mStorageRef.child("images/rara.jpg");
-//        StorageReference riversRef = mStorageRef.child("images/"+ UUID.randomUUID().toString());
         final StorageReference riversRef = mStorageRef.child(new StringBuilder("images/").append(UUID.randomUUID().toString())
                 .toString());
 
@@ -182,6 +187,7 @@ public class Addplaces extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //ImageChoose
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -189,18 +195,19 @@ public class Addplaces extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 
+    //Upload Data
     public void UploadData(String name,String photName,String photoDesc,String detail){
         PhotoDetailModelClass p = new PhotoDetailModelClass();
-        p.setName(name);
         p.setPhotoDesc(photoDesc);
         p.setPhotoName(photName);
-        p.setDetail(detail);
+
 
         newPostRef.setValue(p, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
                 if (databaseError != null) {
-                    Toast.makeText(Addplaces.this, "Data could not be saved " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Addplaces.this, "Data could not be saved " + databaseError.getMessage(),
+                            Toast.LENGTH_SHORT).show();
                     System.out.println("Data could not be saved " + databaseError.getMessage());
 
                     startActivity(new Intent(Addplaces.this, ExploreMoreFloat.class));

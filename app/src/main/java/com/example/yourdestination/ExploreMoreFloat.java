@@ -2,19 +2,29 @@ package com.example.yourdestination;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ExploreMoreFloat extends AppCompatActivity {
 FloatingActionButton floatingActionButton;
     Toolbar toolbar;
+    RecyclerView mRecyclerView;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference reference;
+
 
 
 
@@ -26,22 +36,25 @@ FloatingActionButton floatingActionButton;
 
         FloatingActionButton floatingActionButton = findViewById(R.id.flot_btn);
 
-//        toolbar = findViewById(R.id.tool);
-//        setSupportActionBar(toolbar);
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        reference = firebaseDatabase.getReference("places");
+
+
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ExploreMoreFloat.this,"Go",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(ExploreMoreFloat.this, LoginFormForUser.class));
+                startActivity(new Intent(ExploreMoreFloat.this, Login.class));
 
             }
         });
-    }
-
-    private void setSupportActionBar(Toolbar tool) {
     }
 
     @Override
@@ -56,3 +69,4 @@ FloatingActionButton floatingActionButton;
         return super.onOptionsItemSelected(item);
     }
 }
+
